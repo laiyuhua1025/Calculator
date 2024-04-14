@@ -16,140 +16,113 @@ namespace Calculator
         {
             InitializeComponent();
         }
+
+        
         float firstNumber, secondNumber; 
-        int operators = -1;
+        int operators = -1; 
 
         private void btnOne_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "1";
+            Add_Number("1");
         }
 
         private void btnTwo_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "2";
+            Add_Number("2");
         }
 
         private void btnThree_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "3";
+            Add_Number("3");
         }
 
         private void btnFour_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "4";
+            Add_Number("4");
         }
 
         private void btnFive_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "5";
+            Add_Number("5");
         }
 
         private void btnSix_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "6";
+            Add_Number("6");
         }
 
         private void btnSeven_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "7";
+            Add_Number("7");
         }
 
         private void btnEight_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "8";
+            Add_Number("8");
         }
 
         private void btnNine_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
-
-            txtNumber.Text = txtNumber.Text + "9";
+            Add_Number("9");
         }
 
         private void btnZero_Click(object sender, EventArgs e)
         {
-            if (txtNumber.Text == "0")
-            {
-                txtNumber.Text = "";
-            }
+            Add_Number("0");
+        }
 
-            txtNumber.Text = txtNumber.Text + "0";
+        private void Add_Number(string _number)
+        {
+            if (txtNumber.Text == "0")
+                txtNumber.Text = "";
+            txtNumber.Text = txtNumber.Text + _number;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            firstNumber = Convert.ToSingle(txtNumber.Text); 
-            txtNumber.Text = "0"; 
-            operators = 0;
+            Select_Operator(0);
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            firstNumber = Convert.ToSingle(txtNumber.Text);
-            txtNumber.Text = "0";
-            operators = 1;
+            Select_Operator(1);
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            firstNumber = Convert.ToSingle(txtNumber.Text);
-            txtNumber.Text = "0";
-            operators = 2;
+            Select_Operator(2);
         }
 
         private void btnDivide_Click(object sender, EventArgs e)
         {
-            firstNumber = Convert.ToSingle(txtNumber.Text);
+            Select_Operator(3);
+        }
+
+        private void Select_Operator(int _operator)
+        {
+            firstNumber = Convert.ToSingle(txtNumber.Text); 
+            txtNumber.Text = "0"; 
+            operators = _operator; 
+        }
+
+        private void btnDot_Click(object sender, EventArgs e)
+        {
+            
+            if (txtNumber.Text.IndexOf(".") == -1)
+                txtNumber.Text = txtNumber.Text + ".";
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
             txtNumber.Text = "0";
-            operators = 3;
+            firstNumber = 0f;
+            secondNumber = 0f;
+            operators = -1;
         }
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            float finalResults = 0f;
+            float finalResults = 0f; 
             secondNumber = Convert.ToSingle(txtNumber.Text); 
 
            
@@ -171,20 +144,7 @@ namespace Calculator
 
             txtNumber.Text = string.Format("{0:0.##########}", finalResults); 
 
-           
-            firstNumber = 0f;
-            secondNumber = 0f;
-            operators = -1;
-        }
-
-        private void btnDot_Click(object sender, EventArgs e)
-        {
-            if (txtNumber.Text.IndexOf(".") == -1)
-                txtNumber.Text = txtNumber.Text + ".";
-        }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtNumber.Text = "0";
+            
             firstNumber = 0f;
             secondNumber = 0f;
             operators = -1;
